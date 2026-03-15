@@ -3,12 +3,11 @@
 {
 "FROM":
 [
-"ZTB_INCIDENT"
+"ZTB_INC_EVENT"
 ],
 "ASSOCIATED":
 [
-"ZI_TBCHECK",
-"ZI_TB_EVENT"
+"ZR_TBINCIDENT"
 ],
 "BASE":
 [],

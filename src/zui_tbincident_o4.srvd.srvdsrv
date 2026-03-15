@@ -6,6 +6,9 @@
     name: 'ZC_TBINCIDENT'
   }
 }
-define service ZUI_TBINCIDENT_O4 provider contracts odata_v4_ui {
+define service ZUI_TBINCIDENT_O4
+  provider contracts odata_v4_ui {
   expose ZC_TBINCIDENT;
+  expose Zc_Tb_Check;
+  expose Zc_Tb_Event;
 }

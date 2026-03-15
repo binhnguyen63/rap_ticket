@@ -25,11 +25,16 @@ authorization master( global )
   update;
   delete;
 
+  association _Check {create; with draft; }
+  association _Event {create; with draft; }
+
   draft action Activate optimized;
   draft action Discard;
   draft action Edit;
   draft action Resume;
   draft determine action Prepare;
+
+
 
   mapping for ZTB_INCIDENT corresponding extensible
   {
@@ -48,4 +53,62 @@ authorization master( global )
     LastChangedAt = LAST_CHANGED_AT;
   }
 
+}
+define behavior for ZI_TBCHECK
+persistent table ZTB_INC_CHECK
+lock dependent by _Incident
+etag master LastChangedAt
+authorization dependent by _Incident
+draft table ZTB_INC_CHECk_D
+ {
+	delete;
+	update;
+	field (readonly) IncidentUuid, CheckUuid;
+	
+	field (numbering : managed) CheckUuid;
+	
+	association _Incident {with draft;}
+	
+	mapping for ztb_inc_check {
+	   CheckResult = check_result;
+	   CheckType = check_type;
+	   CheckUuid = check_uuid;
+	   CreatedAt = created_at;
+	   CreatedBy = created_by;
+	   IncidentUuid = incident_uuid;
+	   LastChangedAt = last_changed_at;
+	   LastChangedBy = last_changed_by;
+	   Message = message;
+	   Score = score;
+	
+	}
+	
+}
+
+define behavior for ZI_TB_EVENT
+persistent table ztb_inc_event
+lock dependent by _Incident
+etag master LastChangedAt
+authorization dependent by _Incident
+draft table ztb_inc_event_d
+{
+  update;
+  delete;
+
+  field ( readonly ) IncidentUuid, EventUuid;
+  field ( numbering : managed ) EventUuid;
+
+  association _Incident {with draft;}
+
+  mapping for ztb_inc_event
+  {
+    EventUuid      = event_uuid;
+    IncidentUuid   = incident_uuid;
+    EventType      = event_type;
+    Details        = details;
+    CreatedBy      = created_by;
+    CreatedAt      = created_at;
+    LastChangedBy  = last_changed_by;
+    LastChangedAt  = last_changed_at;
+  }
 }
