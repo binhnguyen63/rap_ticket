@@ -1,0 +1,51 @@
+managed implementation in class ZBP_R_TBINCIDENT unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_TBINCIDENT alias ZrTbincident
+persistent table ZTB_INCIDENT
+extensible
+draft table ZTBINCIDENT_D
+etag master LastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   IncidentUUID,
+   CreatedBy,
+   CreatedAt,
+   LastChangedBy,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   IncidentUUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTB_INCIDENT corresponding extensible
+  {
+    IncidentUUID = INCIDENT_UUID;
+    Title = TITLE;
+    Category = CATEGORY;
+    SourceSystem = SOURCE_SYSTEM;
+    Severity = SEVERITY;
+    Status = STATUS;
+    Description = DESCRIPTION;
+    AssignedTeam = ASSIGNED_TEAM;
+    ResultNote = RESULT_NOTE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}

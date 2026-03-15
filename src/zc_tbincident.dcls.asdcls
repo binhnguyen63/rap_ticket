@@ -1,0 +1,6 @@
+@EndUserText.label: 'ZC_TBINCIDENT'
+@MappingRole: true
+define role ZC_TBINCIDENT {
+  grant select on ZC_TBINCIDENT
+  where INHERITING CONDITIONS FROM ENTITY ZR_TBINCIDENT REPLACING { ROOT WITH _BaseEntity };
+}
