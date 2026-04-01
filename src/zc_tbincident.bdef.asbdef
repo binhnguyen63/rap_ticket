@@ -17,4 +17,16 @@ use etag
   use action Resume;
   use action Prepare;
 
+  use association _Check { create; with draft; }
+
+  use action AnalyzeIncident;
+  use action CloseIncident;
+  use action ResolveIncident;
+
+}
+
+define behavior for Zc_Tb_Check{
+    use update;
+    use delete;
+	use association _Incident { with draft; }
 }

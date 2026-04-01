@@ -1,0 +1,53 @@
+@Metadata.layer: #CORE
+annotate entity Zc_Tb_Check with
+{
+  @UI.facet: [
+  {
+  label: 'General Information',
+  id: 'GeneralInfo',
+  purpose: #STANDARD,
+  position: 10 ,
+  type: #IDENTIFICATION_REFERENCE
+  },
+  {
+      label: 'Check table',
+      id: 'checkTable',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      position: 20
+   }]
+
+  @UI.lineItem: [{ position: 10, label: 'Check ID' }]
+    @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [{ position: 10, label: 'Check ID' }]
+  CheckUuid;
+
+  @UI.lineItem: [{ position: 20, label: 'Incident ID' }]
+  @UI.identification: [{ position: 20, label: 'Incident ID' }]
+  IncidentUuid;
+
+  @UI.lineItem: [{ position: 30, label: 'Check Type' }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 30, label: 'Check Type' }]
+  CheckType;
+
+  @UI.lineItem: [{ position: 40, label: 'Check Result' }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [{ position: 40, label: 'Check Result' }]
+  CheckResult;
+
+  @UI.lineItem: [{ position: 50, label: 'Message' }]
+  @UI.identification: [{ position: 50, label: 'Message' }]
+  Message;
+
+  @UI.lineItem: [{ position: 60, label: 'Score' }]
+  @UI.identification: [{ position: 60, label: 'Score' }]
+  Score;
+
+  @UI.lineItem: [{ position: 70, label: 'Created By' }]
+  CreatedBy;
+
+  @UI.lineItem: [{ position: 80, label: 'Created At' }]
+  CreatedAt;
+
+}

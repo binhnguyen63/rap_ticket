@@ -12,6 +12,13 @@ annotate view ZC_TBINCIDENT with
     purpose: #STANDARD, 
     position: 10 , 
     type: #IDENTIFICATION_REFERENCE
+  }, { 
+    id: 'CheckTable',
+    purpose: #STANDARD,
+    type: #LINEITEM_REFERENCE,
+    label: 'Check Table',
+    position: 20,
+    targetElement: '_Check'
   } ]
   @UI.identification: [ {
     position: 10 , 
@@ -84,7 +91,10 @@ annotate view ZC_TBINCIDENT with
   } ]
   @UI.lineItem: [ {
     position: 60 
-  } ]
+  },
+  { dataAction: 'AnalyzeIncident', label: 'Analyze Incident', position: 30, type: #FOR_ACTION  },
+   { dataAction: 'CloseIncident', label: 'Close Incident', position: 40, type: #FOR_ACTION  },
+   { dataAction: 'ResolveIncident', label: 'Resolve Incident', position: 50, type: #FOR_ACTION  }]
   @UI.selectionField: [ {
     position: 60 
   } ]

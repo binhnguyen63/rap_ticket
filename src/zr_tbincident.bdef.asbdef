@@ -34,6 +34,11 @@ authorization master( global )
   draft action Resume;
   draft determine action Prepare;
 
+  action AnalyzeIncident result [1] $self;
+  action StartWork result [1] $self;
+  action ResolveIncident parameter ZI_RESOLVE_PARAM result [1] $self;
+  action CloseIncident  result [1] $self;
+
 
 
   mapping for ZTB_INCIDENT corresponding extensible
